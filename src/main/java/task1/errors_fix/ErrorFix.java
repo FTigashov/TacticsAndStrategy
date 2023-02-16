@@ -16,6 +16,7 @@ interface Stoppable {
 
 // добавил несуществующий класс Engine
 class Engine {}
+
 abstract class Car implements Movable, Stoppable {
     private Engine engine;
     private String color;

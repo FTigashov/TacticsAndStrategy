@@ -6,8 +6,9 @@ public class StartApp {
         Figure triangle = new Triangle(2, 5);
         Figure circle = new Circle(5);
 
-        square.findFigureSquare();
-        triangle.findFigureSquare();
-        circle.findFigureSquare();
+        Figure[] figures = {square, triangle, circle};
+        for (Figure figure : figures) {
+            figure.findFigureSquare();
+        }
     }
 }
