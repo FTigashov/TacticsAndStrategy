@@ -21,7 +21,7 @@ public class PingPong {
                     }
                     System.out.println("Ping");
                     action = "Pong";
-                    monitor.notifyAll();
+                    monitor.notify();
                 }
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
@@ -38,7 +38,7 @@ public class PingPong {
                     }
                     System.out.println("Pong");
                     action = "Ping";
-                    monitor.notifyAll();
+                    monitor.notify();
                 }
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
