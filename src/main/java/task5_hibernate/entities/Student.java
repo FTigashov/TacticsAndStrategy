@@ -1,4 +1,4 @@
-package task5_hibernate.entity;
+package task5_hibernate.entities;
 
 import jakarta.persistence.*;
 
