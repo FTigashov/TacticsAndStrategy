@@ -28,26 +28,28 @@ public class StudentDAO implements StudentDAOImpl {
 
     @Override
     public void appendNewStudentRecord(Student student) {
-        Session session = SessionFactoryUtil.getSessionFactory().openSession();
-        Transaction appendTransaction = session.beginTransaction();
-        session.persist(student);
-        appendTransaction.commit();
-        session.close();
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction appendTransaction = session.beginTransaction();
+            session.persist(student);
+            appendTransaction.commit();
+        }
     }
 
     @Override
     public void updateStudentRecord(Student student) {
-        Session session = SessionFactoryUtil.getSessionFactory().openSession();
-        Transaction updateTransaction = session.beginTransaction();
-        session.merge(student);
-        updateTransaction.commit();
-        session.close();
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction updateTransaction = session.beginTransaction();
+            session.merge(student);
+            updateTransaction.commit();
+        }
     }
 
     @Override
     public void deleteStudentRecord(Student student) {
-        Session session = SessionFactoryUtil.getSessionFactory().openSession();
-        Transaction updateTransaction = session.beginTransaction();
-        session.remove(student);
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession();) {
+            Transaction updateTransaction = session.beginTransaction();
+            session.remove(student);
+            updateTransaction.commit();
+        }
     }
 }

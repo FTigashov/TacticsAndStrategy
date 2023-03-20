@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgresql://localhost:5432/postgres?currentSchema=hibernate_db</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/hibernate_db</property>
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
         <property name="connection.pool_size">8</property>
