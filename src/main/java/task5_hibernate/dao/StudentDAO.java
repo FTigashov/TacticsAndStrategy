@@ -39,6 +39,19 @@ public class StudentDAO implements StudentDAOImpl {
     }
 
     @Override
+    public void appendNewStudentBatch(int amount) {
+        Transaction appendBatchTransaction = null;
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            appendBatchTransaction = session.beginTransaction();
+            for (int i = 1; i <= amount; i++) {
+                session.persist(new Student(String.format("Student_%d", i), (int) (Math.random() * 6) + 2));
+            }
+        } catch (Exception e) {
+            if (appendBatchTransaction != null) appendBatchTransaction.rollback();
+        }
+    }
+
+    @Override
     public long amountOfRecords() {
         return findAllStudents().size();
     }

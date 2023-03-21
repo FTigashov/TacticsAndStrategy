@@ -12,4 +12,6 @@ public interface StudentDAOImpl {
     void updateStudentRecord(int id, String name);
     void updateStudentRecord(int id, int mark);
     void deleteStudentRecord(int id);
+
+    void appendNewStudentBatch(int amount);
 }

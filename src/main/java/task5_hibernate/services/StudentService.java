@@ -21,6 +21,9 @@ public class StudentService {
     public void appendStudent(Student student) {
         studentDAO.appendNewStudentRecord(student);
     }
+    public void appendStudentsBatch(int amount) {
+        studentDAO.appendNewStudentBatch(amount);
+    }
     public void updateStudent(int id, String name) {
         studentDAO.updateStudentRecord(id, name);
     }
@@ -32,6 +35,9 @@ public class StudentService {
     }
 
     public void getAmountOfAllStudents() {
-        System.out.printf("Общее количество записей в бд: %d\n", studentDAO.amountOfRecords()); }
+        System.out.printf("Общее количество записей в бд: %d\n", studentDAO.amountOfRecords());
+    }
+
+
 
 }
