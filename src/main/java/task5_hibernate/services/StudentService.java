@@ -21,11 +21,17 @@ public class StudentService {
     public void appendStudent(Student student) {
         studentDAO.appendNewStudentRecord(student);
     }
-    public void updateStudent(Student student) {
-        studentDAO.updateStudentRecord(student);
+    public void updateStudent(int id, String name) {
+        studentDAO.updateStudentRecord(id, name);
     }
-    public void deleteStudent(Student student) {
-        studentDAO.deleteStudentRecord(student);
+    public void updateStudent(int id, int mark) {
+        studentDAO.updateStudentRecord(id, mark);
     }
+    public void deleteStudent(int id) {
+        studentDAO.deleteStudentRecord(id);
+    }
+
+    public void getAmountOfAllStudents() {
+        System.out.printf("Общее количество записей в бд: %d\n", studentDAO.amountOfRecords()); }
 
 }

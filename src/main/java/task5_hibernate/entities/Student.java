@@ -1,6 +1,6 @@
 package task5_hibernate.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table (name = "students")

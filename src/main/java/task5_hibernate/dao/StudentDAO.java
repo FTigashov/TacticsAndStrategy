@@ -28,28 +28,59 @@ public class StudentDAO implements StudentDAOImpl {
 
     @Override
     public void appendNewStudentRecord(Student student) {
+        Transaction appendTransaction = null;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
-            Transaction appendTransaction = session.beginTransaction();
+            appendTransaction = session.beginTransaction();
             session.persist(student);
             appendTransaction.commit();
+        } catch (Exception e) {
+            if (appendTransaction != null) appendTransaction.rollback();
         }
     }
 
     @Override
-    public void updateStudentRecord(Student student) {
+    public long amountOfRecords() {
+        return findAllStudents().size();
+    }
+
+    @Override
+    public void updateStudentRecord(int id, String name) {
+        Transaction updateTransaction = null;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
-            Transaction updateTransaction = session.beginTransaction();
-            session.merge(student);
+            updateTransaction = session.beginTransaction();
+            Student student = findById(id);
+            student.setName(name);
+            session.saveOrUpdate(student);
             updateTransaction.commit();
+        } catch (Exception e) {
+            if (updateTransaction != null) updateTransaction.rollback();
         }
     }
 
     @Override
-    public void deleteStudentRecord(Student student) {
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession();) {
-            Transaction updateTransaction = session.beginTransaction();
-            session.remove(student);
+    public void updateStudentRecord(int id, int mark) {
+        Transaction updateTransaction = null;
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            updateTransaction = session.beginTransaction();
+            Student student = findById(id);
+            student.setMark(mark);
+            session.saveOrUpdate(student);
             updateTransaction.commit();
+        } catch (Exception e) {
+            if (updateTransaction != null) updateTransaction.rollback();
+        }
+    }
+
+    @Override
+    public void deleteStudentRecord(int id) {
+        Transaction deleteTransaction = null;
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession();) {
+            deleteTransaction = session.beginTransaction();
+            Student student = findById(id);
+            session.delete(student);
+            deleteTransaction.commit();
+        } catch (Exception e) {
+            if (deleteTransaction != null) deleteTransaction.rollback();
         }
     }
 }
