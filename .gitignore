@@ -8,5 +8,14 @@
 /dataSources.local.xml
 /.idea/
 /target/
+/out/
 pom.xml
 TacticsAndStrategy.iml
+/out/
+
+/ServletWebApp/.mvn/
+/ServletWebApp/.gitignore
+/ServletWebApp/mvnw.cmd
+/ServletWebApp/mvnw
+/ServletWebApp/src/test/
+/ServletWebApp/src/main/webapp/WEB-INF/web.xml
